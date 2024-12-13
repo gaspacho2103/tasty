@@ -1,11 +1,11 @@
 {
-    "name": "Notes",
+    "name": "AvtoTech",
     "start_url": "index.html",
     "orientation": "portrait",
     "display": "fullscreen",
     "icons": [{
-      "src": "note.png",
-      "sizes": "512x512",
+      "src": "logo.png",
+      "sizes": "390x844",
       "type": "image/png"
     }]
 }

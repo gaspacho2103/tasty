@@ -5,306 +5,417 @@
   </head>
   <body>
   
-    <div id="install-screen">
-      <img src="note.png">
-      <p>Приложение для создания и редактирования заметок.<br />
-        <a href="https://youtu.be/8mO2ikXyQ84">Ссылка на урок</a>
-      </p>
+    <div class="install-screen">
+      <img src="logo.png">
+      <p>Приложение АвтоТех для записи на техническое обслуживание</p><br />
       <div>
         <i id="install-icon" class="material-icons shadow-icon">file_download</i>
       </div>
     </div>
   
-    <div id="main-screen">
-      <span id="main-info">Все заметки</span>
-      <span id="notes-count"></span>
-      <table>
-        <tbody>     
-        </tbody>
-      </table>
-      <i id="add-note-icon" class="material-icons shadow-icon" onclick="addNoteIconClick()">add</i>
+    <div class="main-screen">
+      <div class="header">
+        <div class="container header-container">
+            <nav class="navigate">
+                <a class="nav__link">Главная</a>
+                <a class="nav__link">Отзывы</a>
+            </nav>
+            <div class="telephone">
+                <img src="icons/russia.png" alt="" class="ru">
+                <a class="phone">+7(800)555-35-35</a>
+            </div>
+        </div>
+      </div>
+      <section class="start">
+        <div class="container start-container">
+            <div class="start-text">
+                <h3 id="text-blue">Лучшая</h3>
+                <h3>станция технического обслуживания</h3>
+                <h3 id="text-blue">в г. Энгельс</h3>
+            </div>
+        </div>
+    </section>
+      <div class="services">
+        <div class="container">
+            <h3 class="services__title">Наша компания - это:</h3>
+            <div class="cards-wrapper">
+                    <div class="card">
+                        <img src="icons/auto.png" alt="icon">
+                        <h4>Качество</h4>
+                        <p>Специалисты нашей конторы качествено работают с автомобилями разных производителей и типов.</p>
+                    </div>
+                    <div class="card">
+                        <img src="icons/clock.png" alt="icon">
+                        <h4>Время</h4>
+                        <p>От сдачи авто на ремонт и до приведения его в состояние эксплуатации проходит не более недели!</p>
+                    </div>
+                    <div class="card">
+                        <img src="icons/message.png" alt="icon">
+                        <h4>Отзывы</h4>
+                        <p>Клиенты нашей компании благодарят нас за честный и качественный труд и оставляют хорошие отзывы.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="order">
+            <div class="container">
+            <h3 class="order__title">Оставьте заявку на посещение!</h3>
+            <form action="" class="zakaz" method="post">
+                <div class="first-block">
+                    <label for="name" class="order-label">Введите имя:</label><br>
+                    <input type="text" name="name" id="name" class="order-input"><br>
+                    <label for="phone" class="order-label">Введите номер телефона:</label><br>
+                    <input type="text" name="phone" id="phone" class="order-input"><br>
+                    <label for="company" class="order-label">Введите название компании:</label><br>
+                    <input type="text" name="company" id="company" class="order-input"><br>
+                    <label for="service" class="order-label">Выберите услугу:</label><br>
+                    <select name="service" id="service" class="service-select">
+                        <option>Диагностика</option>
+                        <option>Ремонт и замена запчастей</option>
+                        <option>Шиномонтаж</option>
+                    </select><br>
+                </div>
+                <div class="second-block">
+                    <label for="type" class="order-label">Выберите тип автомобиля:</label><br>
+                    <select name="type" id="type" class="service-select">
+                        <option>Фургон</option>
+                        <option>Габаритный автомобиль</option>
+                        <option>Легковой автомобиль</option>
+                    </select><br>
+                    <label for="avto" class="order-label">Введите марку автомобиля:</label><br>
+                    <input type="text" name="avto" id="avto" class="order-input"><br><br><br>
+                    <button type="submit" class="sender-button" onclick="addOrder()">Отправить заявку</button>
+                </div>
+            </form>
+            </div>
+        </div>
+        <div class="footer" id="footer">
+            <div class="container footer__container">
+                <div class="contacts">
+                    <h2 class="footer__title">Наши контакты:</h2>
+                    <ul>
+                        <li><a href="#!"><img src="icons/telega.svg"> t.me/avtotech</a></li>
+                        <li><a href="#!"><img src="icons/telephone.svg"> +7(800)555-35-35</a></li>
+                        <li><a href="#!"><img src="icons/mail.svg"> example@mail.com</a></li>
+                    </ul>
+                </div>
+                <div class="adress">
+                    <h2 class="footer__title">Наш адрес:</h2>
+                    <h3 class="adress__desc">улица пушкина дом колотушкина</h3>
+                </div>
+            </div>
+            <div class="copyright">
+                <h2 class="footer__logo">Copyright by АвтоТех</h2>
+            </div>
+        </div>
     </div>
   
-    <div id="edit-screen">
-      <i id="back-icon" class="material-icons" onclick="backIconClick()">arrow_back_ios</i>
-      <input type="text" placeholder="Название" onchange="saveNote()">
-      <hr/>
-      <textarea onchange="saveNote()"></textarea>
+    <div class="review-screen">
+      
     </div>
   
     <style>
-      body {
-        font-family: Arial;
-      }
-      /* MAIN SCREEN */
-      #main-screen {
-        display: none;
-      }
-      table {
-        font-size: xx-large;
-        width: 100%;
-        margin-top: 15%;
-        float: left;
-      }
-      tbody > tr {
-        width: 100%;
-      }
-      #main-info, #notes-count {
-        font-size: xx-large;
-        float: left;
-        width: 100%;
-        margin-top: 50%;
-        text-align: center;
-      }
-      #notes-count {
-        margin-top: 2.5%;
-        color: grey;
-        font-size: x-large;
-        font-weight: lighter;
-      }
-      .shadow-icon {
-        border-radius: 50%;
-        padding: 4.5%;
-        color: #ff3d12;
-        box-shadow: 0px 5px 10px rgba(135, 135, 135, 0.5);
-      }
-      #add-note-icon {
-        font-size: xx-large;
-        position: absolute;
-        top: 720px;
-        right: 30px;
-      }
-      .note-title {
-        font-size: x-large;
-        padding-left: 2.5%;
-        width: 90%;
-        padding-top: 6.5%;
-      }
-      .note-del-icon {
-        padding-top: 6.5%;
-        font-size: xx-large;
-        color: grey;
-      }
-      .note-date {
-        font-size: large;
-        padding-top: 2.5%;
-        float: left;
-        color: grey;
-      }
-      /* EDIT SCREEN */
-      #edit-screen {
-        display: none;
-        margin: 5%;
-        margin-top: 10%;
-        max-width: 100%;
-      }
-      #back-icon {
-        font-size: xx-large;
-        float: left;
-      }
-      input {
-        font-size: xx-large;
-        border: none;
-        outline: none;
-        float: left;
-        width: 80%;
-      }
-      hr {
-        width: 100%;
-        float: left;
-        margin-top: 5%;
-        margin-bottom: 10%;
-        border: 1px solid grey;
-      }
-      textarea {
-        font-size: x-large;
-        font-family: Arial;
-        width: 100%;
-        border: none;
-        outline: none;
-        resize: none;
-        height: 100%;
-      }
-      /* INSTALL SCREEN */
-      #install-screen img {
-        display: block;
-        width: 50%;
-        margin: auto;
-        margin-top: 45%;
-      }
-      #install-screen p {
-        font-size: x-large;
-        width: 100%;
-        text-align: center;
-      }
-      #install-screen div {
-        width: 100%;
-        text-align: center;
-      }
-      #install-screen i {
-        font-size: xx-large;
-        margin: auto;
-      }
-      @media all and (display-mode: fullscreen){
-        #install-screen {
-          display: none;
+        .install-screen {
+            display: none;
         }
-        #main-screen {
-          display: block;
+
+        * {
+            margin: 0 auto;
+            padding: 0;
         }
-      }
-      /* COMPUTER PREVIEW */
-      #computer-preview {
-        display: none;
-        margin-top: 5vh;
-        width: 100%;
-        text-align: center;
-      }
-      #computer-preview img {
-        width: 30%
-      }
-      @media (min-width: 992px ) {
-        #computer-preview {
-          display: block;
+
+        body {
+            font-family: Ubuntu, sans-serif;
         }
-        #install-screen {
-          display: none;
+
+        .header {
+            background-color: #fff;
+            color: #333;
+
+            margin-bottom: 10px;
         }
-      }
+
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: auto;
+        }
+
+        .header-container {
+            display: flex;
+            padding: 11px 0;
+        }
+
+        .navigate {
+            display: flex;
+            padding-top: 25px;
+            color: #3a3a3b;
+            text-transform: uppercase;
+        }
+
+        .navigate a + a {
+            margin-left: 18px;
+        }
+
+        .nav__link {
+            color: #3a3a3b;
+            font-size: 17px;
+
+            transition: .3s;
+        }
+
+        .nav__link:hover {
+            color: #4280e3;
+        }
+
+        .telephone {
+            display: flex;
+            padding-top: 20px;
+        }
+
+        .ru {
+            width: 25px;
+            height: 25px;
+        }
+
+        .phone {
+            padding: 3px;
+            font-size: 18px;
+
+            color: #3a3a3b;
+            transition: .3s;
+        }
+
+        .phone:hover {
+            color: #4280e3;
+
+            font-size: 21px;
+        }
+
+        .start {
+            width: 100%;
+            min-height: 600px;
+            background-image: url('icons/back.jpg');
+
+            color: #3a3a3b;
+
+            background-color: #333;
+            background-size: cover;
+            background-position: center;
+
+            padding-top: 20px;
+
+            margin-bottom: 60px;
+        }
+
+        .start-text {
+            padding: 20px;
+            margin-top: 100px;
+        }
+
+        .start-text h3 {
+            font-size: 40px;
+            font-weight: 700;
+            padding: 8px;
+            text-align: center;
+            letter-spacing: 1.5px;
+        }
+
+        h3#text-blue {
+            background: #4280e3;
+            padding: 15px 0px;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        .cards-wrapper {
+            width: 100%;
+
+            text-align: center;
+
+            margin-bottom: 100px;
+        }
+
+        .card {
+            padding: 35px 15px 25px 15px;
+
+            max-width: 325px;
+            border: 1px solid #4280e3;
+            border-radius: 5px;
+        }
+
+        .card + .card {
+            margin-top: 35px;
+        }
+
+        .card img {
+            margin-bottom: 25px;
+
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+        }
+
+        .card h4 {
+            margin-bottom: 15px;
+
+            font-size: 20px;
+            line-height: 1.5;
+
+            letter-spacing: 7px;
+            text-transform: uppercase;
+
+            color: #4280e3;
+        }
+
+        .services__title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 700;
+            color: #3a3a3b;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .order {
+            background: #283b59;
+            color: #fff;
+            padding: 60px 15px;
+
+            margin-bottom: 60px;
+        }
+
+        .order__title {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 50px;
+        }
+
+        .zakaz {
+            width: 90%;
+        }
+
+        .order-label {
+            font-size: 23px;
+            font-weight: 500;
+
+            margin-bottom: 5px;
+        }
+
+        .order-input {
+            width: 100%;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .service-select {
+            width: 100%;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+
+        .sender-button {
+            width: 100%;
+            padding: 15px 20px;
+
+            color: #fff;
+            font-size: 22px;
+
+            background-color: #965e30;
+
+            border-radius: 5px;
+
+            transition: .3s;
+        }
+
+        .sender-button:active {
+            background-color: #4280e3;
+        }
+
+        .footer {
+	        width: 100%;
+        }
+
+        .footer__container {
+            display: flex;
+            justify-content: center;
+
+            margin-bottom: 30px;
+        }
+
+        .footer__title {
+            margin-bottom: 25px;
+
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 3px;
+
+            color: #4280e3;
+        }
+
+        .contacts {
+            width: 55%;
+        }
+
+        .adress {
+            width: 40%;
+        }
+
+        .contacts img {
+            width: 18px;
+            height: 18px;
+        }
+
+        .contacts li {
+            font-size: 16px;
+
+            padding: 7px 0px;
+        }
+
+        .contacts a {
+            text-decoration: none;
+            color: #3a3a3b;
+        }
+
+        .adress li {
+            font-size: 16px;
+
+            padding: 2px 0px;
+        }
+
+        .adress__desc {
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 17px;
+        }
+
+        .copyright {
+            width: 100%;
+
+            font-family: 'Mooli', sans-serif;
+
+            background-color: #303030;
+            font-size: 17px;
+            text-align: center;
+            color: #9c9c9c;
+            padding: 20px 0;
+
+            text-transform: uppercase;
+        }
+      
     </style>
     
-    <script src="https://momentjs.com/downloads/moment-with-locales.js"></script>
     <script>
       // Извлечение тегов из разметки
-      let input = window.document.querySelector('input');
-      let textarea = window.document.querySelector('textarea');
-      let mainScreen = window.document.querySelector('#main-screen');
-      let editScreen = window.document.querySelector('#edit-screen');
-      let notesCount = window.document.querySelector('#notes-count');
-      let tableBody = window.document.querySelector('tbody');
+      let mainScreen = window.document.querySelector('.main-screen');
+      let editScreen = window.document.querySelector('.review-screen');
       let installIcon = window.document.querySelector('#install-icon');
-  
-      //Переменные
-      let noteList = [];
-      let noteId = -1;
-  
-      // Функции
-      const removeNoteFromList = (id) => {
-        noteList.map((elem, index) => {
-          if(elem.id === id) noteList.splice(index, 1);
-        });
-        window.localStorage.setItem('noteList', JSON.stringify(noteList));
-        window.location.reload();
-      }
-      const goToEdit = () => {
-        mainScreen.style.display = 'none';
-        editScreen.style.display = 'block';
-        noteList.map(elem => {
-          if(elem.id === noteId){
-            input.value = elem.title;
-            textarea.value = elem.text;
-          }
-        });
-        textarea.focus();
-      }
-      const createNewTableRow = (id, noteTitle, noteDate) => {
-        // <tr>
-        //   <td class="note-title">
-        //     Название
-        //     <br/>
-        //     <span class="note-date">May 15, 2023</span>
-        //   </td>
-        //   <td>
-        //     <i class="material-icons note-del-icon">delete_outlined</i>
-        //   </td>
-        // </tr>
-        // Создание тегов
-        let row = window.document.createElement('tr');
-        let titleColumn = window.document.createElement('td');
-        let delColumn = window.document.createElement('td');
-        let delIcon = window.document.createElement('i');
-        let date = window.document.createElement('span');
-        // Установка классов
-        titleColumn.className = 'note-title';
-        date.className = 'note-date';
-        delIcon.className = 'material-icons note-del-icon';
-        // Установка содержимого
-        date.innerText = noteDate;
-        delIcon.innerText = 'delete_outlined';
-        titleColumn.innerText = noteTitle;
-        // Обработчики событий
-        titleColumn.addEventListener('click', () => {
-          noteId = id;
-          goToEdit();
-        });
-        delColumn.addEventListener('click', () => removeNoteFromList(id));
-        // Добавление элементов
-        delColumn.appendChild(delIcon);
-        titleColumn.appendChild(window.document.createElement('br'));
-        titleColumn.appendChild(date);
-        row.appendChild(titleColumn);
-        row.appendChild(delColumn);
-        tableBody.appendChild(row);
-      }
-      const onLoad = () => {
-        noteList = window.localStorage.getItem('noteList')
-          ? JSON.parse(window.localStorage.getItem('noteList'))
-          : [];
-        notesCount.innerText = `Заметок ${noteList.length}`;
-        if(noteList) {
-          noteList.map(elem => {
-            createNewTableRow(elem.id, elem.title, elem.date);
-          });
-        }
-      }
-      onLoad();
-  
-      // Утилиты для обработчиков
-      const getTitleSlice = (title, strLength = 20) => {
-        if(title.length > strLength)
-          return `${title.substr(0, strLength)}...`;
-        else return title;      
-      }
-      const updateNote = () => {
-        // Обновление заметки по noteId
-        noteList.map(elem => {
-          if(elem.id === noteId){
-            elem.title = getTitleSlice(input.value);
-            elem.text = textarea.value;
-          }
-        })
-      }
-      const createNewNote = () => {
-        let date = moment(new Date());
-        let object = {
-          id: noteList.length,
-          title: input.value
-            ? getTitleSlice(input.value)
-            : getTitleSlice(textarea.value)
-          ,
-          text: textarea.value,
-          date: date.format('LL'),
-        }
-        noteList.push(object);
-      }
-      // Обработчики событий
-      const backIconClick = () => {
-        editScreen.style.display = 'none';
-        mainScreen.style.display = 'block';
-        noteId = -1;
-        window.location.reload();
-      }
-      const saveNote = () => {
-        if(textarea.value){
-          if(noteId < 0) createNewNote();
-          else updateNote();
-          window.localStorage.setItem('noteList', JSON.stringify(noteList));
-        }
-      }
-      const addNoteIconClick = () => {
-        mainScreen.style.display = 'none';
-        editScreen.style.display = 'block';
-      }
     
       // Установка
       let defaultInstallEvent = null;
