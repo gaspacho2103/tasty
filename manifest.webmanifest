@@ -6,8 +6,8 @@
   "orientation": "portrait",
   "display": "fullscreen",
   "icons": [{
-      "src": "avto.png",
-      "sizes": "612x612",
+      "src": "logo.png",
+      "sizes": "512x512",
       "type": "image/png"
   }]
 }
