@@ -17,8 +17,8 @@
       <div class="header">
         <div class="container header-container">
             <nav class="navigate">
-                <a class="nav__link">Главная</a>
-                <a class="nav__link">Отзывы</a>
+                <a class="nav__link" onclick="openMainScreen()">Главная</a>
+                <a class="nav__link" onclick="openReviewScreen()">Отзывы</a>
             </nav>
             <div class="telephone">
                 <img src="icons/russia.png" alt="" class="ru">
@@ -110,17 +110,71 @@
         </div>
     </div>
   
-    <div class="review-screen">
-      
+    <div id="review-screen">
+        <div class="header">
+            <div class="container header-container">
+                <nav class="navigate">
+                    <a class="nav__link" onclick="openMainScreen()">Главная</a>
+                    <a class="nav__link" onclick="openReviewScreen()">Отзывы</a>
+                </nav>
+                <div class="telephone">
+                    <img src="icons/russia.png" alt="" class="ru">
+                    <a class="phone">+7(800)555-35-35</a>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="container">
+                    <div class="review__block">
+                        <div class="reviews">
+                            <div class="review_card">
+                                <h5 class="nickname">Lorem</h5>
+                                <p class="comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, sit. Incidunt corrupti explicabo eaque! A nihil saepe quod iure beatae laboriosam vel eaque debitis quae soluta odit voluptate, atque incidunt?</p>
+                            </div>
+                        </div>
+                        <div class="add__review">
+                            <form action="" method="post" class="review_form">
+                                <h5 class="form-title">Оставьте свой отзыв</h5>
+                                <input type="text" name="name" id="name" placeholder="Введите имя"><br>
+                                <textarea type="text" name="review" id="review" placeholder="Напишите о впечатлениях"></textarea><br>
+                                <button class="sender-button" onclick="addReview()">Отправить</button>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="footer" id="footer">
+            <div class="container footer__container">
+                <div class="contacts">
+                    <h2 class="footer__title">Наши контакты:</h2>
+                    <ul>
+                        <li><a href="#!"><img src="icons/telega.svg"> t.me/avtotech</a></li>
+                        <li><a href="#!"><img src="icons/telephone.svg"> +7(800)555-35-35</a></li>
+                        <li><a href="#!"><img src="icons/mail.svg"> example@mail.com</a></li>
+                    </ul>
+                </div>
+                <div class="adress">
+                    <h2 class="footer__title">Наш адрес:</h2>
+                    <h3 class="adress__desc">улица пушкина дом колотушкина</h3>
+                </div>
+            </div>
+            <div class="copyright">
+                <h2 class="footer__logo">Copyright by АвтоТех</h2>
+            </div>
+        </div>
     </div>
   
     <style>
-        /* .install-screen {
-            display: none;
-        } */
-
         #main-screen {
             display: none;
+        }
+
+        #review-screen {
+            display: none;
+        }
+
+        #review-screen {
+            display: block;
         }
 
         #install-screen img {
@@ -450,16 +504,106 @@
 
             text-transform: uppercase;
         }
+
+        .main {
+            margin-bottom: 100px;
+        }
+
+        .review_card {
+            background: #dbdbdb;
+            padding: 15px;
+            border-radius: 5px;
+
+            margin-bottom: 30px;
+        }
+
+        .nickname {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .review_form {
+            padding: 10px;
+            text-align: center;
+
+            background: #4280e3;
+
+            border-radius: 5px;
+
+            padding: 20px;
+        }
+
+        .form-title {
+            font-size: 25px;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .review_form input {
+            margin-bottom: 35px;
+            font-size: 20px;
+
+            padding: 10px;
+            color: #3a3a3b;
+
+            width: 100%;
+            
+            border-radius: 5px;
+        }
+
+        .review_form textarea {
+            margin-bottom: 35px;
+            font-size: 20px;
+
+            padding: 10px;
+            color: #3a3a3b;
+            
+            border-radius: 5px;
+
+            width: 100%;
+
+            resize: none;
+
+            min-height: 130px;
+        }
+
+        .sender-button {
+            padding: 10px 15px;
+            background-color: #fff;
+
+            border-radius: 5px;
+
+            transition: .3s;
+
+            color: #333;
+
+        }
+
+        .sender-button:active {
+            background: #4280e3;
+            color: #fff;
+        }
       
     </style>
     
     <script>
-      // Извлечение тегов из разметки
       let mainScreen = window.document.querySelector('#main-screen');
-      let editScreen = window.document.querySelector('#review-screen');
+      let reviewScreen = window.document.querySelector('#review-screen');
       let installIcon = window.document.querySelector('#install-icon');
+
+      function openMainScreen() {
+        mainScreen.style.display = 'block';
+        reviewScreen.style.display = 'none';
+      }
+
+      function openReviewScreen() {
+        mainScreen.style.display = 'none';
+        reviewScreen.style.display = 'block';
+      }
     
-      // Установка
+      
       let defaultInstallEvent = null;
       window.addEventListener('beforeinstallprompt', (event) => {
         event.preventDefault();
