@@ -5,7 +5,7 @@
   </head>
   <body>
   
-    <div class="install-screen">
+    <div id="install-screen">
       <img src="logo.png">
       <p>Приложение АвтоТех для записи на техническое обслуживание</p><br />
       <div>
@@ -13,7 +13,7 @@
       </div>
     </div>
   
-    <div class="main-screen">
+    <div id="main-screen">
       <div class="header">
         <div class="container header-container">
             <nav class="navigate">
@@ -26,7 +26,7 @@
             </div>
         </div>
       </div>
-      <section class="start">
+      <div class="start">
         <div class="container start-container">
             <div class="start-text">
                 <h3 id="text-blue">Лучшая</h3>
@@ -34,7 +34,7 @@
                 <h3 id="text-blue">в г. Энгельс</h3>
             </div>
         </div>
-    </section>
+    </div>
       <div class="services">
         <div class="container">
             <h3 class="services__title">Наша компания - это:</h3>
@@ -119,35 +119,42 @@
             display: none;
         } */
 
-        .install-screen img {
+        #install-screen img {
             display: block;
             width: 50%;
             margin: auto;
             margin-top: 45%;
         }
-        .install-screen p {
+        #install-screen p {
             font-size: x-large;
             width: 100%;
             text-align: center;
         }
-        .install-screen div {
+        #install-screen div {
             width: 100%;
             text-align: center;
         }
-        .install-screen i {
+        #install-screen i {
             font-size: xx-large;
             margin: auto;
         }
         @media all and (display-mode: fullscreen){
-            .install-screen {
+            #install-screen {
                 display: none;
             }
-            .main-screen {
+            #main-screen {
                 display: block;
             }
         }
 
-        .main-screen {
+        .shadow-icon {
+            border-radius: 50%;
+            padding: 4.5%;
+            color: #ff3d12;
+            box-shadow: 0px 5px 10px rgba(135, 135, 135, 0.5);
+        }
+
+        #main-screen {
             display: none;
         }
 
@@ -445,8 +452,8 @@
     
     <script>
       // Извлечение тегов из разметки
-      let mainScreen = window.document.querySelector('.main-screen');
-      let editScreen = window.document.querySelector('.review-screen');
+      let mainScreen = window.document.querySelector('#main-screen');
+      let editScreen = window.document.querySelector('#review-screen');
       let installIcon = window.document.querySelector('#install-icon');
     
       // Установка
@@ -458,5 +465,7 @@
       installIcon.addEventListener('click', (event) => {
         defaultInstallEvent.prompt();
       })
+
+      
     </script>
   </body>

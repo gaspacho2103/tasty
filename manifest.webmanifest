@@ -1,11 +1,12 @@
 {
-    "name": "AvtoTech",
-    "start_url": "index.html",
-    "orientation": "portrait",
-    "display": "fullscreen",
-    "icons": [{
+  "name": "AvtoTech",
+  "short_name": "AvtoTech",
+  "start_url": "index.html",
+  "orientation": "portrait",
+  "display": "fullscreen",
+  "icons": [{
       "src": "logo.png",
       "sizes": "390x844",
       "type": "image/png"
-    }]
+  }]
 }
