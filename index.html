@@ -21,8 +21,7 @@
                 <a class="nav__link" onclick="openReviewScreen()">Отзывы</a>
             </nav>
             <div class="telephone">
-                <img src="icons/russia.png" alt="" class="ru">
-                <a class="phone">+7(800)555-35-35</a>
+                
             </div>
         </div>
       </div>
@@ -127,17 +126,14 @@
             <div class="container">
                     <div class="review__block">
                         <div class="reviews">
-                            <div class="review_card">
-                                <h5 class="nickname">Lorem</h5>
-                                <p class="comment">Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium, sit. Incidunt corrupti explicabo eaque! A nihil saepe quod iure beatae laboriosam vel eaque debitis quae soluta odit voluptate, atque incidunt?</p>
-                            </div>
+                            
                         </div>
                         <div class="add__review">
                             <form action="" method="post" class="review_form">
                                 <h5 class="form-title">Оставьте свой отзыв</h5>
                                 <input type="text" name="name" id="name" placeholder="Введите имя"><br>
                                 <textarea type="text" name="review" id="review" placeholder="Напишите о впечатлениях"></textarea><br>
-                                <button class="sender-button" onclick="addReview()">Отправить</button>
+                                <button class="review-button" onclick="addReview()">Отправить</button>
                             </form>
                         </div>
                     </div>
@@ -145,18 +141,7 @@
         </div>
         <div class="footer" id="footer">
             <div class="container footer__container">
-                <div class="contacts">
-                    <h2 class="footer__title">Наши контакты:</h2>
-                    <ul>
-                        <li><a href="#!"><img src="icons/telega.svg"> t.me/avtotech</a></li>
-                        <li><a href="#!"><img src="icons/telephone.svg"> +7(800)555-35-35</a></li>
-                        <li><a href="#!"><img src="icons/mail.svg"> example@mail.com</a></li>
-                    </ul>
-                </div>
-                <div class="adress">
-                    <h2 class="footer__title">Наш адрес:</h2>
-                    <h3 class="adress__desc">улица пушкина дом колотушкина</h3>
-                </div>
+                
             </div>
             <div class="copyright">
                 <h2 class="footer__logo">Copyright by АвтоТех</h2>
@@ -392,6 +377,8 @@
             padding: 10px;
             margin-top: 15px;
             margin-bottom: 20px;
+
+            font-size: 17px;
         }
 
         .service-select {
@@ -400,6 +387,8 @@
             padding: 10px;
             margin-top: 15px;
             margin-bottom: 20px;
+
+            font-size: 17px;
         }
 
         .sender-button {
@@ -414,6 +403,8 @@
             border-radius: 5px;
 
             transition: .3s;
+
+            border-style: none;
         }
 
         .sender-button:active {
@@ -497,6 +488,8 @@
             margin-bottom: 100px;
 
             width: 90%;
+
+            margin-top: 30px;
         }
 
         .review_card {
@@ -559,7 +552,7 @@
             min-height: 130px;
         }
 
-        .sender-button {
+        .review-button {
             padding: 10px 15px;
             background-color: #fff;
 
@@ -569,9 +562,13 @@
 
             color: #333;
 
+            width: 100%;
+
+            border-style: none;
+
         }
 
-        .sender-button:active {
+        .review-button:active {
             background: #4280e3;
             color: #fff;
         }
@@ -592,7 +589,114 @@
         mainScreen.style.display = 'none';
         reviewScreen.style.display = 'block';
       }
-    
+
+      async function addOrder() {
+        const name = document.getElementById('name').value,
+        telephone = document.getElementById('phone').value,
+        company = document.getElementById('company').value,
+        service = document.getElementById('service').value,
+        type = document.getElementById('type').value,
+        avto = document.getElementById('avto').value;
+
+        let formData = new FormData();
+        formData.append('name', name);
+        formData.append('telephone', telephone);
+        formData.append('company', company);
+        formData.append('service', service);
+        formData.append('type', type);
+        formData.append('avto', avto);
+
+        const res = await fetch('https://cb60950.tw1.ru/orders', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await res.json();
+
+        console.log(data);
+    }
+
+    async function getReviews() {
+    let res = await fetch('https://cb60950.tw1.ru/reviews');
+    let reviews = await res.json();
+
+    // document.querySelector('.table').innerHTML = '';
+
+        reviews.forEach((review) => {
+            document.querySelector('.reviews').innerHTML += `
+            
+                
+            <div class="review_card">
+                                <h5 class="nickname">${review.name}</h5>
+                                <p class="comment">${review.review}</p>
+                </div>
+            
+            
+            `
+        });
+    }
+
+    async function addReview() {
+        const name = document.getElementById('name').value,
+            review = document.getElementById('review').value;
+
+        let formData = new FormData();
+        formData.append('name', name);
+        formData.append('review', review);
+
+        const res = await fetch('https://cb60950.tw1.ru/reviews', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await res.json();
+
+        console.log(data);
+    }
+
+    async function getContacts() {
+    let res = await fetch('https://cb60950.tw1.ru/contacts');
+    let contacts = await res.json();
+
+    // document.querySelector('.table').innerHTML = '';
+
+    contacts.forEach((contact) => {
+        document.querySelector('.telephone').innerHTML += `
+        
+            
+           <img src="assets/icons/russia.png" alt="" class="ru">
+            <a class="phone" href="">${contact.telephone}</a>
+        
+        
+            `
+
+        document.querySelector('.footer__container').innerHTML += `
+        
+            
+           <div class="contacts">
+				<h2 class="footer__title">Наши контакты:</h2>
+				<ul>
+					<li><a href="#!"><img src="assets/icons/telega.svg"> ${contact.telegram}</a></li>
+					<li><a href="#!"><img src="assets/icons/telephone.svg"> ${contact.telephone}</a></li>
+					<li><a href="#!"><img src="assets/icons/mail.svg"> ${contact.email}</a></li>
+				</ul>
+			</div>
+			<div class="adress">
+				<h2 class="footer__title">Наш адрес:</h2>
+				<h3 class="adress__desc">${contact.address}</h3>
+			</div>
+        
+        
+            `
+        });
+    }
+
+    if(mainScreen.style.display == 'block') {
+        getContacts();
+    } else if (reviewScreen.style.display == 'block') {
+        getContacts();
+        getReviews();
+    }
       
       let defaultInstallEvent = null;
       window.addEventListener('beforeinstallprompt', (event) => {
