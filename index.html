@@ -139,7 +139,7 @@
   
     <style>
         #main-screen {
-            display: block;
+            display: none;
         }
 
         #review-screen {
@@ -610,7 +610,6 @@
         let res = await fetch('https://cb60950.tw1.ru/reviews');
         let reviews = await res.json();
 
-        // Очищаем контейнер перед добавлением новых отзывов
         document.querySelector('.reviews').innerHTML = '';
 
         reviews.forEach((review) => {
@@ -639,7 +638,6 @@
         const data = await res.json();
         console.log(data);
 
-        // Обновляем список отзывов после добавления нового
         getReviews();
 
         window.location.href = 'index.html';
