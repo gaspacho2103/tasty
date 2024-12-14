@@ -649,7 +649,7 @@
     // document.querySelector('.table').innerHTML = '';
 
     contacts.forEach((contact) => {
-        document.querySelector('.telephone').innerHTML += `
+        document.querySelectorAll('.telephone').innerHTML += `
         
             
            <img src="icons/russia.png" alt="" class="ru">
@@ -658,7 +658,7 @@
         
             `
 
-        document.querySelector('.footer__container').innerHTML += `
+        document.querySelectorAll('.footer__container').innerHTML += `
         
             
            <div class="contacts">
@@ -681,11 +681,6 @@
 
     getContacts();
     getReviews();
-
-    if(reviewScreen.style.display == 'block') {
-        getContacts();
-        getReviews();
-    }
       
       let defaultInstallEvent = null;
       window.addEventListener('beforeinstallprompt', (event) => {
