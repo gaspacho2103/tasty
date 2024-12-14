@@ -652,7 +652,7 @@
         document.querySelector('.telephone').innerHTML += `
         
             
-           <img src="assets/icons/russia.png" alt="" class="ru">
+           <img src="icons/russia.png" alt="" class="ru">
             <a class="phone" href="">${contact.telephone}</a>
         
         
@@ -664,9 +664,9 @@
            <div class="contacts">
 				<h2 class="footer__title">Наши контакты:</h2>
 				<ul>
-					<li><a href="#!"><img src="assets/icons/telega.svg"> ${contact.telegram}</a></li>
-					<li><a href="#!"><img src="assets/icons/telephone.svg"> ${contact.telephone}</a></li>
-					<li><a href="#!"><img src="assets/icons/mail.svg"> ${contact.email}</a></li>
+					<li><a href="#!"><img src="icons/telega.svg"> ${contact.telegram}</a></li>
+					<li><a href="#!"><img src="icons/telephone.svg"> ${contact.telephone}</a></li>
+					<li><a href="#!"><img src="icons/mail.svg"> ${contact.email}</a></li>
 				</ul>
 			</div>
 			<div class="adress">
@@ -681,6 +681,11 @@
 
     getContacts();
     getReviews();
+
+    if(reviewScreen.style.display == 'block') {
+        getContacts();
+        getReviews();
+    }
       
       let defaultInstallEvent = null;
       window.addEventListener('beforeinstallprompt', (event) => {
