@@ -605,22 +605,19 @@
     }
 
     async function getReviews() {
-    let res = await fetch('https://cb60950.tw1.ru/reviews');
-    let reviews = await res.json();
+        let res = await fetch('https://cb60950.tw1.ru/reviews');
+        let reviews = await res.json();
 
-    // document.querySelector('.table').innerHTML = '';
+        // Очищаем контейнер перед добавлением новых отзывов
+        document.querySelector('.reviews').innerHTML = '';
 
         reviews.forEach((review) => {
             document.querySelector('.reviews').innerHTML += `
-            
-                
-            <div class="review_card">
-                                <h5 class="nickname">${review.name}</h5>
-                                <p class="comment">${review.review}</p>
+                <div class="review_card">
+                    <h5 class="nickname">${review.name}</h5>
+                    <p class="comment">${review.review}</p>
                 </div>
-            
-            
-            `
+            `;
         });
     }
 
@@ -638,44 +635,36 @@
         });
 
         const data = await res.json();
-
         console.log(data);
+
+        // Обновляем список отзывов после добавления нового
+        getReviews();
     }
 
     async function getContacts() {
-    let res = await fetch('https://cb60950.tw1.ru/contacts');
-    let contacts = await res.json();
+        let res = await fetch('https://cb60950.tw1.ru/contacts');
+        let contacts = await res.json();
 
-    // document.querySelector('.table').innerHTML = '';
+        contacts.forEach((contact) => {
+            document.querySelector('.telephone').innerHTML += `
+                <img src="icons/russia.png" alt="" class="ru">
+                <a class="phone" href="">${contact.telephone}</a>
+            `;
 
-    contacts.forEach((contact) => {
-        document.querySelectorAll('.telephone').innerHTML += `
-        
-            
-           <img src="icons/russia.png" alt="" class="ru">
-            <a class="phone" href="">${contact.telephone}</a>
-        
-        
-            `
-
-        document.querySelectorAll('.footer__container').innerHTML += `
-        
-            
-           <div class="contacts">
-				<h2 class="footer__title">Наши контакты:</h2>
-				<ul>
-					<li><a href="#!"><img src="icons/telega.svg"> ${contact.telegram}</a></li>
-					<li><a href="#!"><img src="icons/telephone.svg"> ${contact.telephone}</a></li>
-					<li><a href="#!"><img src="icons/mail.svg"> ${contact.email}</a></li>
-				</ul>
-			</div>
-			<div class="adress">
-				<h2 class="footer__title">Наш адрес:</h2>
-				<h3 class="adress__desc">${contact.address}</h3>
-			</div>
-        
-        
-            `
+            document.querySelector('.footer__container').innerHTML += `
+                <div class="contacts">
+                    <h2 class="footer__title">Наши контакты:</h2>
+                    <ul>
+                        <li><a href="#!"><img src="icons/telega.svg"> ${contact.telegram}</a></li>
+                        <li><a href="#!"><img src="icons/telephone.svg"> ${contact.telephone}</a></li>
+                        <li><a href="#!"><img src="icons/mail.svg"> ${contact.email}</a></li>
+                    </ul>
+                </div>
+                <div class="adress">
+                    <h2 class="footer__title">Наш адрес:</h2>
+                    <h3 class="adress__desc">${contact.address}</h3>
+                </div>
+            `;
         });
     }
 
