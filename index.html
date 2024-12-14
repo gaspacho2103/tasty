@@ -90,18 +90,7 @@
         </div>
         <div class="footer" id="footer">
             <div class="container footer__container">
-                <div class="contacts">
-                    <h2 class="footer__title">Наши контакты:</h2>
-                    <ul>
-                        <li><a href="#!"><img src="icons/telega.svg"> t.me/avtotech</a></li>
-                        <li><a href="#!"><img src="icons/telephone.svg"> +7(800)555-35-35</a></li>
-                        <li><a href="#!"><img src="icons/mail.svg"> example@mail.com</a></li>
-                    </ul>
-                </div>
-                <div class="adress">
-                    <h2 class="footer__title">Наш адрес:</h2>
-                    <h3 class="adress__desc">улица пушкина дом колотушкина</h3>
-                </div>
+                
             </div>
             <div class="copyright">
                 <h2 class="footer__logo">Copyright by АвтоТех</h2>
@@ -117,8 +106,7 @@
                     <a class="nav__link" onclick="openReviewScreen()">Отзывы</a>
                 </nav>
                 <div class="telephone">
-                    <img src="icons/russia.png" alt="" class="ru">
-                    <a class="phone">+7(800)555-35-35</a>
+                    
                 </div>
             </div>
         </div>
@@ -691,12 +679,8 @@
         });
     }
 
-    if(mainScreen.style.display == 'block') {
-        getContacts();
-    } else if (reviewScreen.style.display == 'block') {
-        getContacts();
-        getReviews();
-    }
+    getContacts();
+    getReviews();
       
       let defaultInstallEvent = null;
       window.addEventListener('beforeinstallprompt', (event) => {
