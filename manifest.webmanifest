@@ -1,6 +1,6 @@
 {
-  "name": "AvtoTech",
-  "short_name": "AvtoTech",
+  "name": "ServiceCar",
+  "short_name": "ServiceCar",
   "start_url": "index.html",
   "orientation": "portrait",
   "display": "fullscreen",
