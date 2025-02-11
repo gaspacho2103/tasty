@@ -1,0 +1,686 @@
+<head>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  </head>
+  <body>
+  
+    <div id="install-screen">
+      <img src="logo.png">
+      <p>Приложение ServiceCar для аренды автомобилей</p><br />
+      <div>
+        <i id="install-icon" class="material-icons shadow-icon">file_download</i>
+      </div>
+    </div>
+  
+    <div id="main-screen">
+      <div class="header">
+        <div class="container header-container">
+            <nav class="navigate">
+                <a class="nav__link" onclick="openMainScreen()">Главная</a>
+                <a class="nav__link" onclick="openReviewScreen()">Контакты</a>
+            </nav>
+            <div class="telephone">
+                
+            </div>
+        </div>
+      </div>
+      <div class="start">
+        <div class="container start-container">
+            <div class="start-text">
+                <h3 id="text-blue">Аренда</h3>
+                <h3>легковых автомобилей</h3>
+                <h3 id="text-blue">в г. Саратов</h3>
+            </div>
+        </div>
+    </div>
+      <div class="services">
+        <div class="container">
+            <h3 class="services__title">ServiceCar - это:</h3>
+            <div class="cards-wrapper">
+                    <div class="card">
+                        <img src="icons/auto.png" alt="icon">
+                        <h4>Качество</h4>
+                        <p>Специалисты нашей конторы качествено обслуживают  автомобили разных производителей.</p>
+                    </div>
+                    <div class="card">
+                        <img src="icons/clock.png" alt="icon">
+                        <h4>Время</h4>
+                        <p>Быстрое оформление автомобиля на физическое лицо.</p>
+                    </div>
+                    <div class="card">
+                        <img src="icons/message.png" alt="icon">
+                        <h4>Отзывы</h4>
+                        <p>Клиенты нашей компании благодарят нас за надежность и выгодные цены.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="order">
+            <div class="container">
+            <h3 class="order__title">Заполните заявку на аренду авто!</h3>
+            <form action="" class="zakaz" method="post">
+                <div class="first-block">
+                    <label for="name" class="order-label">Введите имя:</label><br>
+                    <input type="text" name="name" id="name" class="order-input"><br>
+                    <label for="phone" class="order-label">Введите номер телефона:</label><br>
+                    <input type="text" name="phone" id="phone" class="order-input"><br>
+                </div>
+                <div class="second-block">
+                    <label for="type" class="order-label">Выберите тип автомобиля:</label><br>
+                    <select name="type" id="type" class="service-select">
+                        <option>Купе</option>
+                        <option>Седан</option>
+                        <option>Хэтчбек</option>
+                    </select><br>
+                    <label for="avto" class="order-label">Введите желаемую марку:</label><br>
+                    <input type="text" name="avto" id="avto" class="order-input"><br><br><br>
+                    <button type="submit" class="sender-button" onclick="addOrder()">Отправить заявку</button>
+                </div>
+            </form>
+            </div>
+        </div>
+        <div class="footer" id="footer">
+            <div class="container footer__container">
+                
+            </div>
+            <div class="copyright">
+                <h2 class="footer__logo">Copyright by АвтоТех</h2>
+            </div>
+        </div>
+    </div>
+  
+    <div id="review-screen">
+        <div class="header">
+            <div class="container header-container">
+                <nav class="navigate">
+                    <a class="nav__link" onclick="openMainScreen()">Главная</a>
+                    <a class="nav__link" onclick="openReviewScreen()">Контакты</a>
+                </nav>
+                <div class="telephone">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="container">
+                    <div class="review__block">
+                        <div class="reviews">
+                            
+                        </div>
+                        <div class="add__review">
+                            <form action="" method="post" class="review_form">
+                                <h5 class="form-title">Наши контакты</h5>
+                            </form>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="footer" id="footer">
+            <div class="container footer__container">
+                
+            </div>
+            <div class="copyright">
+                <h2 class="footer__logo">Copyright by АвтоТех</h2>
+            </div>
+        </div>
+    </div>
+  
+    <style>
+        #main-screen {
+            display: none;
+        }
+
+        #review-screen {
+            display: none;
+        }
+
+        #install-screen img {
+            display: block;
+            width: 50%;
+            margin: auto;
+            margin-top: 45%;
+        }
+        #install-screen p {
+            font-size: x-large;
+            width: 100%;
+            text-align: center;
+        }
+        #install-screen div {
+            width: 100%;
+            text-align: center;
+        }
+        #install-screen i {
+            font-size: xx-large;
+            margin: auto;
+        }
+        @media all and (display-mode: fullscreen){
+            #install-screen {
+                display: none;
+            }
+            #main-screen {
+                display: block;
+            }
+        }
+
+        .shadow-icon {
+            border-radius: 50%;
+            padding: 4.5%;
+            color: #d11144;
+            box-shadow: 0px 5px 10px rgba(135, 135, 135, 0.5);
+        }
+
+        * {
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        body {
+            font-family: Ubuntu, sans-serif;
+        }
+
+        .header {
+            background-color: #fff;
+            color: #333;
+
+            margin-bottom: 10px;
+        }
+
+        .container {
+            max-width: 355px;
+            width: 100%;
+            margin: auto;
+        }
+
+        .header-container {
+            display: flex;
+            padding: 10px 0;
+        }
+
+        .navigate {
+            display: flex;
+            padding-top: 25px;
+            color: #3a3a3b;
+            text-transform: uppercase;
+        }
+
+        .navigate a + a {
+            margin-left: 10px;
+        }
+
+        .nav__link {
+            color: #3a3a3b;
+            font-size: 15px;
+        }
+
+        .nav__link:active {
+            color: #32a852;
+        }
+
+        .telephone {
+            display: flex;
+            padding-top: 20px;
+            margin-left: 20px;
+        }
+
+        .ru {
+            width: 25px;
+            height: 25px;
+        }
+
+        .phone {
+            padding: 3px;
+            font-size: 17px;
+
+            color: #3a3a3b;
+            transition: .3s;
+        }
+
+        .start {
+            width: 100%;
+            min-height: 600px;
+            background-image: url('icons/back.jpg');
+
+            color: #3a3a3b;
+
+            background-color: #333;
+            background-size: cover;
+            background-position: center;
+
+            padding-top: 20px;
+
+            margin-bottom: 60px;
+        }
+
+        .start-text {
+            padding: 20px;
+            margin-top: 100px;
+        }
+
+        .start-text h3 {
+            font-size: 40px;
+            font-weight: 700;
+            padding: 8px;
+            text-align: center;
+            letter-spacing: 1.5px;
+        }
+
+        h3#text-blue {
+            background: #32a852;
+            padding: 15px 0px;
+            border-radius: 5px;
+            color: #fff;
+        }
+
+        .cards-wrapper {
+            width: 95%;
+
+            text-align: center;
+
+            margin-bottom: 100px;
+        }
+
+        .card {
+            padding: 35px 15px 25px 15px;
+
+            max-width: 325px;
+            border: 1px solid #32a852;
+            border-radius: 5px;
+        }
+
+        .card + .card {
+            margin-top: 35px;
+        }
+
+        .card img {
+            margin-bottom: 25px;
+
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+        }
+
+        .card h4 {
+            margin-bottom: 15px;
+
+            font-size: 20px;
+            line-height: 1.5;
+
+            letter-spacing: 7px;
+            text-transform: uppercase;
+
+            color: #32a852;
+        }
+
+        .services__title {
+            text-align: center;
+            font-size: 27px;
+            font-weight: 700;
+            color: #3a3a3b;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+
+        .order {
+            background: #3f754e;
+            color: #fff;
+            padding: 60px 15px;
+
+            margin-bottom: 60px;
+        }
+
+        .order__title {
+            text-align: center;
+            font-size: 40px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 50px;
+        }
+
+        .zakaz {
+            width: 90%;
+        }
+
+        .order-label {
+            font-size: 23px;
+            font-weight: 500;
+
+            margin-bottom: 5px;
+        }
+
+        .order-input {
+            width: 100%;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+
+            font-size: 17px;
+        }
+
+        .service-select {
+            width: 100%;
+            border-radius: 5px;
+            padding: 10px;
+            margin-top: 15px;
+            margin-bottom: 20px;
+
+            font-size: 17px;
+        }
+
+        .sender-button {
+            width: 100%;
+            padding: 15px 20px;
+
+            color: #fff;
+            font-size: 22px;
+
+            background-color: #fff;
+
+            border-radius: 5px;
+
+            transition: .3s;
+
+            border-style: none;
+        }
+
+        .sender-button:active {
+            background-color: #cacaca;
+        }
+
+        .footer {
+	        width: 100%;
+        }
+
+        .footer__container {
+            display: flex;
+            justify-content: center;
+
+            margin-bottom: 30px;
+        }
+
+        .footer__title {
+            margin-bottom: 25px;
+
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 3px;
+
+            color: #32a852;
+        }
+
+        .contacts {
+            width: 55%;
+        }
+
+        .adress {
+            width: 40%;
+        }
+
+        .contacts img {
+            width: 18px;
+            height: 18px;
+        }
+
+        .contacts li {
+            font-size: 16px;
+
+            padding: 7px 0px;
+
+            list-style-type: none;
+        }
+
+        .contacts a {
+            text-decoration: none;
+            color: #3a3a3b;
+        }
+
+        .adress li {
+            font-size: 16px;
+
+            padding: 2px 0px;
+        }
+
+        .adress__desc {
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 17px;
+        }
+
+        .copyright {
+            width: 100%;
+
+            font-family: 'Mooli', sans-serif;
+
+            background-color: #303030;
+            font-size: 17px;
+            text-align: center;
+            color: #9c9c9c;
+            padding: 20px 0;
+
+            text-transform: uppercase;
+        }
+
+        .main {
+            margin-bottom: 100px;
+
+            width: 90%;
+
+            margin-top: 30px;
+        }
+
+        .review_card {
+            background: #dbdbdb;
+            padding: 15px;
+            border-radius: 5px;
+
+            margin-bottom: 40px;
+        }
+
+        .nickname {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .review_form {
+            padding: 10px;
+            text-align: center;
+
+            background: #32a852;
+
+            border-radius: 5px;
+
+            padding: 20px;
+        }
+
+        .form-title {
+            font-size: 25px;
+            font-weight: 500;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+
+        .review_form input {
+            margin-bottom: 35px;
+            font-size: 20px;
+
+            padding: 10px;
+            color: #3a3a3b;
+
+            width: 100%;
+            
+            border-radius: 5px;
+        }
+
+        .review_form textarea {
+            margin-bottom: 35px;
+            font-size: 20px;
+
+            padding: 10px;
+            color: #3a3a3b;
+            
+            border-radius: 5px;
+
+            width: 100%;
+
+            resize: none;
+
+            min-height: 130px;
+        }
+
+        .review-button {
+            padding: 10px 15px;
+            background-color: #fff;
+
+            border-radius: 5px;
+
+            transition: .3s;
+
+            color: #333;
+
+            width: 100%;
+
+            border-style: none;
+
+        }
+
+        .review-button:active {
+            background: #32a852;
+            color: #fff;
+        }
+      
+    </style>
+    
+    <script>
+      let mainScreen = window.document.querySelector('#main-screen');
+      let reviewScreen = window.document.querySelector('#review-screen');
+      let installIcon = window.document.querySelector('#install-icon');
+
+      function openMainScreen() {
+        mainScreen.style.display = 'block';
+        reviewScreen.style.display = 'none';
+      }
+
+      function openReviewScreen() {
+        mainScreen.style.display = 'none';
+        reviewScreen.style.display = 'block';
+      }
+
+      async function addOrder() {
+        const name = document.getElementById('name').value,
+        telephone = document.getElementById('phone').value,
+        company = document.getElementById('company').value,
+        service = document.getElementById('service').value,
+        type = document.getElementById('type').value,
+        avto = document.getElementById('avto').value;
+
+        let formData = new FormData();
+        formData.append('name', name);
+        formData.append('telephone', telephone);
+        formData.append('company', company);
+        formData.append('service', service);
+        formData.append('type', type);
+        formData.append('avto', avto);
+
+        const res = await fetch('https://cb60950.tw1.ru/orders', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await res.json();
+
+        console.log(data);
+
+        window.location.href = 'index.html';
+    }
+
+    async function getReviews() {
+        let res = await fetch('https://cb60950.tw1.ru/reviews');
+        let reviews = await res.json();
+
+        document.querySelector('.reviews').innerHTML = '';
+
+        reviews.forEach((review) => {
+            document.querySelector('.reviews').innerHTML += `
+                <div class="review_card">
+                    <h5 class="nickname">${review.name}</h5>
+                    <p class="comment">${review.review}</p>
+                </div>
+            `;
+        });
+    }
+
+    async function addReview() {
+        const name = document.getElementById('name_revier').value,
+            review = document.getElementById('review').value;
+
+        let formData = new FormData();
+        formData.append('name', name);
+        formData.append('review', review);
+
+        const res = await fetch('https://cb60950.tw1.ru/reviews', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await res.json();
+        console.log(data);
+
+        getReviews();
+
+        window.location.href = 'index.html';
+    }
+
+    async function getContacts() {
+    let res = await fetch('https://cb60950.tw1.ru/contacts');
+    let contacts = await res.json();
+
+    
+    const telephoneBlocks = document.querySelectorAll('.telephone');
+        telephoneBlocks.forEach(block => {
+            contacts.forEach((contact) => {
+                block.innerHTML += `
+                    <img src="icons/russia.png" alt="" class="ru">
+                    <a class="phone" href="">${contact.telephone}</a>
+                `;
+            });
+        });
+
+    
+    const footerBlocks = document.querySelectorAll('.footer__container');
+        footerBlocks.forEach(block => {
+            contacts.forEach((contact) => {
+                block.innerHTML += `
+                    <div class="contacts">
+                        <h2 class="footer__title">Наши контакты:</h2>
+                        <ul>
+                            <li><a href="#!"><img src="icons/telega.svg"> ${contact.telegram}</a></li>
+                            <li><a href="#!"><img src="icons/telephone.svg"> ${contact.telephone}</a></li>
+                            <li><a href="#!"><img src="icons/mail.svg"> ${contact.email}</a></li>
+                        </ul>
+                    </div>
+                    <div class="adress">
+                        <h2 class="footer__title">Наш адрес:</h2>
+                        <h3 class="adress__desc">${contact.address}</h3>
+                    </div>
+                `;
+            });
+        });
+    }
+
+    getContacts();
+    getReviews();
+      
+      let defaultInstallEvent = null;
+      window.addEventListener('beforeinstallprompt', (event) => {
+        event.preventDefault();
+        defaultInstallEvent = event;
+      })
+      installIcon.addEventListener('click', (event) => {
+        defaultInstallEvent.prompt();
+      })
+
+      
+    </script>
+  </body>
