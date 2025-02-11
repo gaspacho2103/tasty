@@ -579,6 +579,10 @@
         mainScreen.style.display = 'none';
         reviewScreen.style.display = 'block';
       }
+
+      function addOrder() {
+        location.reload();
+      }
       
       let defaultInstallEvent = null;
       window.addEventListener('beforeinstallprompt', (event) => {
