@@ -85,7 +85,7 @@
                 
             </div>
             <div class="copyright">
-                <h2 class="footer__logo">Copyright by АвтоТех</h2>
+                <h2 class="footer__logo">Copyright by ServiceCar</h2>
             </div>
         </div>
     </div>
@@ -121,7 +121,7 @@
                 
             </div>
             <div class="copyright">
-                <h2 class="footer__logo">Copyright by АвтоТех</h2>
+                <h2 class="footer__logo">Copyright by ServiceCar</h2>
             </div>
         </div>
     </div>
@@ -566,111 +566,6 @@
         mainScreen.style.display = 'none';
         reviewScreen.style.display = 'block';
       }
-
-      async function addOrder() {
-        const name = document.getElementById('name').value,
-        telephone = document.getElementById('phone').value,
-        company = document.getElementById('company').value,
-        service = document.getElementById('service').value,
-        type = document.getElementById('type').value,
-        avto = document.getElementById('avto').value;
-
-        let formData = new FormData();
-        formData.append('name', name);
-        formData.append('telephone', telephone);
-        formData.append('company', company);
-        formData.append('service', service);
-        formData.append('type', type);
-        formData.append('avto', avto);
-
-        const res = await fetch('https://cb60950.tw1.ru/orders', {
-            method: 'POST',
-            body: formData
-        });
-
-        const data = await res.json();
-
-        console.log(data);
-
-        window.location.href = 'index.html';
-    }
-
-    async function getReviews() {
-        let res = await fetch('https://cb60950.tw1.ru/reviews');
-        let reviews = await res.json();
-
-        document.querySelector('.reviews').innerHTML = '';
-
-        reviews.forEach((review) => {
-            document.querySelector('.reviews').innerHTML += `
-                <div class="review_card">
-                    <h5 class="nickname">${review.name}</h5>
-                    <p class="comment">${review.review}</p>
-                </div>
-            `;
-        });
-    }
-
-    async function addReview() {
-        const name = document.getElementById('name_revier').value,
-            review = document.getElementById('review').value;
-
-        let formData = new FormData();
-        formData.append('name', name);
-        formData.append('review', review);
-
-        const res = await fetch('https://cb60950.tw1.ru/reviews', {
-            method: 'POST',
-            body: formData
-        });
-
-        const data = await res.json();
-        console.log(data);
-
-        getReviews();
-
-        window.location.href = 'index.html';
-    }
-
-    async function getContacts() {
-    let res = await fetch('https://cb60950.tw1.ru/contacts');
-    let contacts = await res.json();
-
-    
-    const telephoneBlocks = document.querySelectorAll('.telephone');
-        telephoneBlocks.forEach(block => {
-            contacts.forEach((contact) => {
-                block.innerHTML += `
-                    <img src="icons/russia.png" alt="" class="ru">
-                    <a class="phone" href="">${contact.telephone}</a>
-                `;
-            });
-        });
-
-    
-    const footerBlocks = document.querySelectorAll('.footer__container');
-        footerBlocks.forEach(block => {
-            contacts.forEach((contact) => {
-                block.innerHTML += `
-                    <div class="contacts">
-                        <h2 class="footer__title">Наши контакты:</h2>
-                        <ul>
-                            <li><a href="#!"><img src="icons/telega.svg"> ${contact.telegram}</a></li>
-                            <li><a href="#!"><img src="icons/telephone.svg"> ${contact.telephone}</a></li>
-                            <li><a href="#!"><img src="icons/mail.svg"> ${contact.email}</a></li>
-                        </ul>
-                    </div>
-                    <div class="adress">
-                        <h2 class="footer__title">Наш адрес:</h2>
-                        <h3 class="adress__desc">${contact.address}</h3>
-                    </div>
-                `;
-            });
-        });
-    }
-
-    getContacts();
-    getReviews();
       
       let defaultInstallEvent = null;
       window.addEventListener('beforeinstallprompt', (event) => {
